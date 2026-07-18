@@ -269,12 +269,13 @@ nav .nav-links{display:none}
 <div class="contact-grid">
 <div class="contact-info reveal reveal-d2">
 <p>Tell us your renewal date and roughly what you pay today. We'll review your situation and tell you, at no cost, whether we think we can lower it. If we can't, we'll say so.</p>
-<div class="detail">Email: <span><a href="mailto:contact@bruckercyber.com">tbrucker@bruckercyber.com</a></span></div>
+<div class="detail">Email: <span><a href="mailto:tbrucker@bruckercyber.com">tbrucker@bruckercyber.com</a></span></div>
 <div class="detail">Phone: <span>(207) 550-7049</span></div>
 </div>
 <div class="reveal reveal-d3">
-<form class="contact-form" name="contact" method="POST" data-netlify="true" action="/success">
+<form class="contact-form" name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field" action="/success">
 <input type="hidden" name="form-name" value="contact">
+<p style="position:absolute;left:-9999px" aria-hidden="true"><label>Leave this field empty <input name="bot-field" autocomplete="off" tabindex="-1"></label></p>
 <label for="c_name">Name</label><input type="text" id="c_name" name="name" placeholder="Your name" required>
 <label for="c_email">Email</label><input type="email" id="c_email" name="email" placeholder="you@company.com" required>
 <label for="c_company">Company</label><input type="text" id="c_company" name="company" placeholder="Company name">
