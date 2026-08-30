@@ -62,10 +62,14 @@
     text-transform:uppercase;
     color:var(--ink);
   }
-  <div class="mark">
-  <img src="assets/BCA_Square_White.png" alt="Brucker Cyber Advisors">
-  </div>
-  .mark img { height: 28px; width: auto; }
+  .mark img{
+    height:28px;
+    width:auto;
+    display:block;
+    background:var(--ink);
+    padding:5px;
+    border-radius:4px;
+  }
   nav{ display:flex; gap:0.4rem; flex-wrap:wrap; }
   nav a{
     font-family:var(--font-mono);
@@ -153,15 +157,17 @@
 
   /* --- team --- */
   .team{ display:grid; grid-template-columns:1fr 1fr; gap:1.5rem; }
-  .person{ display:flex; gap:0.85rem; align-items:flex-start; }
-  .person .initials{
-    width:38px; height:38px; flex:none;
-    border-radius:50%;
+  .person{ display:block; }
+  .person .photo{
+    width:100%;
+    max-width:180px;
+    aspect-ratio:4 / 3;
+    height:auto;
+    border-radius:8px;
+    object-fit:cover;
     background:var(--ink);
-    color:var(--paper);
-    font-family:var(--font-mono);
-    font-size:0.78rem;
-    display:flex; align-items:center; justify-content:center;
+    display:block;
+    margin-bottom:0.85rem;
   }
   .person .name-row{
     display:flex;
@@ -281,7 +287,10 @@
 <div class="wrap">
 
   <div class="masthead" id="top">
-    <div class="mark">Brucker Cyber Advisors</div>
+    <div class="mark">
+      <img src="assets/BCA_Square_White.png" alt="Brucker Cyber Advisors">
+      Brucker Cyber Advisors
+    </div>
     <nav>
       <a href="#top">Home</a>
       <a href="#how">How it works</a>
@@ -313,7 +322,7 @@
   <h2 id="team">About the team</h2>
   <div class="team">
     <div class="person">
-      <div class="initials">TB</div>
+      <img class="photo" src="assets/Theo.JPG" alt="Theo Brucker">
       <div>
         <div class="name-row"><b>Theo Brucker</b><span class="cred">CISSP</span></div>
         <span class="role">Partner - Security Engineering</span>
@@ -321,7 +330,7 @@
       </div>
     </div>
     <div class="person">
-      <div class="initials">MB</div>
+      <img class="photo" src="assets/Mac.JPG" alt="Mac Brucker">
       <div>
         <div class="name-row"><b>Mac Brucker</b><span class="cred">CISM</span></div>
         <span class="role">Partner - Security &amp; Risk Consulting</span>
