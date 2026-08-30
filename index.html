@@ -1,3 +1,102 @@
+
+Claude finished the response
+
+Edited a file, ran a command, read a file
+Edited a file, ran a command, read a file
+Set to 9:16. I also dropped the assets/ prefix from all three image paths to match the flat layout you're using.
+
+One thing to watch: 9:16 at 180px wide makes each photo 320px tall, which is a lot of vertical space for a page this compact — the two headshots will be the tallest thing on the screen. If it feels heavy when you load it, lower max-width to about 130px and they'll come down to roughly 230px tall while keeping the same tall shape.
+
+
+Brucker brief
+Code · HTML 
+Okay, and how would I make the masthead logo bigger?
+
+One number, in the .mark img rule:
+
+css
+  .mark img{
+    height:28px;   /* ← raise this */
+    width:auto;
+    display:block;
+    background:var(--ink);
+    padding:5px;
+    border-radius:4px;
+  }
+Change 28px to 40px or 48px. width:auto keeps the proportions, so you never touch the width.
+
+Two things that scale alongside it:
+
+The padding:5px is the dark border around your white mark, and it won't grow with the logo — at 48px that ring will look thin. Bump it to 7 or 8px to keep the proportion. Same for border-radius:4px, which can go to 6px so the corners don't look sharp on a bigger tile.
+
+The masthead is a flex row with the nav, and it wraps when things stop fitting. At around 56px the logo plus wordmark plus four nav pills will start pushing the nav onto its own line at desktop widths. Not broken, just a different layout — worth loading it to see whether you like the wrap.
+
+If you go large enough that the text wordmark next to it feels redundant, delete this line and let the logo carry it alone:
+
+html
+      Brucker Cyber Advisors
+Can I get rid of the padding?
+
+Yes. Delete the three lines that make the dark tile:
+
+css
+  .mark img{
+    height:28px;
+    width:auto;
+    display:block;
+  }
+That leaves just the sizing.
+
+The catch is why the tile was there: your file is BCA_Square_White.png, and a white logo on a near-white page background is close to invisible. If the white parts of the logo are only an outline or a small mark, that might be fine. If it's a solid white block, it'll disappear.
+
+Two options if that happens. Keep the dark background but lose the breathing room — padding:0 with background:var(--ink) still tints behind the logo, though a white mark will run right to the edge. Or swap to a dark version of the file if you have one, in which case removing the tile entirely is exactly right.
+
+Worth just trying it — you'll know in one refresh.
+
+Is there a way to scale it dynamically with the page width?
+
+
+Thought for 6s
+Thought for 6s
+Yes — clamp() on the height:
+
+css
+  .mark img{
+    height:clamp(24px, 6vw, 40px);
+    width:auto;
+    display:block;
+  }
+Three values: minimum, preferred, maximum. The middle one is what it actually wants to be — 6% of the viewport width — and the outer two are the floor and ceiling it won't cross.
+
+So on a 380px phone it computes 23px and gets clamped up to 24. Around 620px it lands near 37px. On a wide desktop it would want 80px but stops at 40.
+
+Tune it by adjusting the numbers: raise 6vw to make it grow faster, raise 40px to let it get bigger before stopping.
+
+One thing worth knowing: your content column is capped at max-width:620px, so past that width the page stops growing but vw keeps climbing. That's exactly why the ceiling matters — without it the logo would keep inflating while everything around it stayed fixed, which looks off. Setting the max somewhere near the size you like at 620px keeps it proportional to the column rather than the window.
+
+If you'd rather it not scale at all above the point where the layout stops changing, a fixed height is honestly fine here. The column is narrow enough that there isn't much range for the logo to respond to.
+
+lets incorporate that into the code
+
+
+Ran 2 commands, edited a file, read a file
+Ran 2 commands, edited a file, read a file
+In. The logo now scales between 24px and 40px tall depending on viewport width, and I dropped the dark tile since you asked to remove the padding — the rule is just the three sizing lines now.
+
+Check it against your actual file. If BCA_Square_White.png is a solid white mark, it may vanish against the light background now that the dark tile is gone. Adding background:var(--ink); back on its own (no padding) would tint directly behind it.
+
+
+Brucker brief
+Code · HTML 
+
+Want to be notified when Claude responds?
+Write a message…
+
+
+Claude is AI and can make mistakes. Please double-check responses.
+
+
+Brucker brief · HTML
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -38,13 +137,13 @@
   a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible{
     outline:2px solid var(--accent); outline-offset:3px;
   }
-
+ 
   .wrap{
     max-width:620px;
     margin:0 auto;
     padding:4rem 1.5rem 3rem;
   }
-
+ 
   /* --- masthead --- */
   .masthead{
     display:flex;
@@ -63,7 +162,7 @@
     color:var(--ink);
   }
   .mark img{
-    height:40px;
+    height:clamp(24px, 6vw, 40px);
     width:auto;
     display:block;
   }
@@ -82,11 +181,11 @@
     transition:border-color .15s ease, color .15s ease, background .15s ease;
   }
   nav a:hover{ color:var(--ink); border-color:var(--slate-soft); background:var(--white); }
-
+ 
   /* anchor offset so headings aren't flush to the top edge */
   [id]{ scroll-margin-top:1.5rem; }
   #top{ scroll-margin-top:2.5rem; }
-
+ 
   /* --- brief --- */
   h1{
     font-size:clamp(1.9rem, 4vw + 1rem, 2.6rem);
@@ -94,17 +193,17 @@
     margin-bottom:1.25rem;
   }
   h1 em{ font-style:normal; color:var(--accent-dark); }
-
+ 
   .lede{ font-size:1.15rem; margin:0 0 1.25rem; }
   .brief p{ margin:0 0 1.25rem; color:var(--slate); }
   .brief p strong{ color:var(--ink); font-weight:500; }
-
+ 
   hr{
     border:none;
     border-top:1px solid var(--line);
     margin:2.75rem 0;
   }
-
+ 
   /* --- steps --- */
   .steps{
     list-style:none;
@@ -137,7 +236,7 @@
     margin-bottom:0.25rem;
   }
   .steps span{ color:var(--slate); font-size:0.98rem; display:block; }
-
+ 
   h2{
     font-size:1.25rem;
     margin-bottom:1rem;
@@ -151,7 +250,7 @@
     display:block;
     margin-bottom:0.75rem;
   }
-
+ 
   /* --- team --- */
   .team{ display:grid; grid-template-columns:1fr 1fr; gap:1.5rem; }
   .person{ display:block; }
@@ -195,7 +294,7 @@
   @media (max-width:520px){
     .team{ grid-template-columns:1fr; gap:1.25rem; }
   }
-
+ 
   /* --- form --- */
   .form-card{
     background:var(--white);
@@ -227,7 +326,7 @@
   input:hover, select:hover, textarea:hover{ border-color:var(--slate-soft); }
   textarea{ resize:vertical; min-height:80px; font-family:var(--font-body); }
   select{ appearance:none; background-image:linear-gradient(45deg,transparent 50%,var(--slate) 50%),linear-gradient(135deg,var(--slate) 50%,transparent 50%); background-position:calc(100% - 18px) 50%, calc(100% - 13px) 50%; background-size:5px 5px,5px 5px; background-repeat:no-repeat; }
-
+ 
   button{
     width:100%;
     font-family:var(--font-display);
@@ -242,7 +341,7 @@
     transition:background .18s ease;
   }
   button:hover{ background:var(--accent-dark); }
-
+ 
   .form-foot{
     font-size:0.85rem;
     color:var(--slate-soft);
@@ -250,7 +349,7 @@
     text-align:center;
     line-height:1.5;
   }
-
+ 
   .confirm{
     display:none;
     text-align:center;
@@ -268,7 +367,7 @@
   }
   .confirm h3{ font-size:1.05rem; margin-bottom:0.4rem; }
   .confirm p{ color:var(--slate); font-size:0.95rem; margin:0; }
-
+ 
   footer{
     margin-top:2.5rem;
     text-align:center;
@@ -280,9 +379,9 @@
 </style>
 </head>
 <body>
-
+ 
 <div class="wrap">
-
+ 
   <div class="masthead" id="top">
     <div class="mark">
       <img src="BCA_Square_White.png" alt="Brucker Cyber Advisors">
@@ -295,17 +394,17 @@
       <a href="#contact">Contact</a>
     </nav>
   </div>
-
+ 
   <div class="brief">
     <h1>Lower your cyber insurance premium. <em>Pay nothing unless you save.</em></h1>
-
+ 
     <p class="lede">Brucker Cyber Advisors reviews your cyber insurance policy and identifies the gaps in your security controls driving up your premiums. We then help you build the evidence your carrier needs to re-price your risk.</p>
-
+ 
     <p>Our fee comes out of your first-year savings. If your premium doesn't drop, you owe us nothing.</p>
   </div>
-
+ 
   <hr>
-
+ 
   <span class="section-note" id="how">How it works</span>
   <ol class="steps">
     <li><div><b>Policy &amp; contract review</b> <span>We analyze your current cyber insurance policy, underwriting questionnaire, and renewal terms to find what your carrier prices against and where you're being penalized.</span></div></li>
@@ -313,9 +412,9 @@
     <li><div><b>Implementation &amp; evidence collection</b> <span>We guide the implementation of any deficient security controls, and assemble the documented evidence your carrier needs to re-price your risk at renewal.</span></div></li>
     <li><div><b>Savings</b> <span>You renew your policy with the newly implemented controls and documented evidence in hand, and your premium drops. The security improvements are yours to keep.</span></div></li>
   </ol>
-
+ 
   <hr>
-
+ 
   <h2 id="team">About the team</h2>
   <div class="team">
     <div class="person">
@@ -335,12 +434,12 @@
       </div>
     </div>
   </div>
-
+ 
   <hr>
-
+ 
   <span class="section-note" id="contact">Get in touch</span>
   <h2>Tell us about your organization.</h2>
-
+ 
   <div class="form-card">
     <div id="formBody">
       <div class="field">
@@ -366,20 +465,20 @@
       <button type="button" id="submitBtn">Request a review</button>
       <p class="form-foot">We'll reply within two business days. No cost, no obligation.</p>
     </div>
-
+ 
     <div class="confirm" id="confirm">
       <div class="tick">&#10003;</div>
       <h3>Thanks, we've got it.</h3>
       <p>We'll be in touch within two business days.</p>
     </div>
   </div>
-
+ 
   <footer>
     <a href="https://bruckercyber.com">bruckercyber.com</a>
   </footer>
-
+ 
 </div>
-
+ 
 <script>
   document.getElementById('submitBtn').addEventListener('click', function(){
     var email = document.getElementById('email').value.trim();
@@ -392,6 +491,7 @@
     document.getElementById('confirm').classList.add('on');
   });
 </script>
-
+ 
 </body>
 </html>
+ 
