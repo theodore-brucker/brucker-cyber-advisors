@@ -3,283 +3,390 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Brucker Cyber Advisors — Lower Your Cyber Insurance Premium at Zero Upfront Cost</title>
-<meta name="description" content="Brucker Cyber Advisors helps small and midsize businesses lower cyber insurance premiums. Free policy review, security control implementation, and carrier-ready evidence. Pay nothing unless you save.">
-<link rel="canonical" href="https://bruckercyber.com/">
-<meta name="robots" content="index, follow">
-<meta property="og:type" content="website">
-<meta property="og:site_name" content="Brucker Cyber Advisors">
-<meta property="og:title" content="Lower Your Cyber Insurance Premium. Pay Nothing Unless You Save.">
-<meta property="og:description" content="Free policy review, security control implementation, and carrier-ready evidence for SMBs. Our fee comes out of your savings.">
-<meta property="og:url" content="https://bruckercyber.com/">
-<meta property="og:image" content="https://bruckercyber.com/BCA_Square_White.png">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Lower Your Cyber Insurance Premium. Pay Nothing Unless You Save.">
-<meta name="twitter:description" content="Free policy review, security control implementation, and carrier-ready evidence for SMBs. Our fee comes out of your savings.">
-<meta name="twitter:image" content="https://bruckercyber.com/BCA_Square_White.png">
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "ProfessionalService",
-  "name": "Brucker Cyber Advisors",
-  "url": "https://bruckercyber.com/",
-  "logo": "https://bruckercyber.com/BCA_Square_White.png",
-  "description": "Cybersecurity consulting that lowers cyber insurance premiums for small and midsize businesses through policy review, security control implementation, and underwriting evidence. Zero upfront cost.",
-  "areaServed": "United States",
-  "knowsAbout": ["Cyber insurance", "Cybersecurity", "Security controls", "MFA", "Endpoint detection and response", "Incident response planning", "Risk management"],
-  "founder": [
-    {"@type": "Person", "name": "Theo Brucker", "jobTitle": "Partner, Security Engineering"},
-    {"@type": "Person", "name": "Mac Brucker", "jobTitle": "Partner, Security & Risk Consulting"}
-  ]
-}
-</script>
-<link rel="icon" type="image/png" href="BCA_Square_White.png">
+<title>Brucker Cyber Advisors</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Source+Sans+3:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;500;600;700&family=Source+Serif+4:opsz,wght@8..60,400;8..60,500&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
-*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
-:root{
---blue:#215F9A;--blue-dark:#183f66;--blue-light:#e8f0f8;
---black:#000;--white:#fff;
---gray-50:#f8f9fa;--gray-100:#f0f1f3;--gray-200:#e0e2e6;
---gray-400:#9a9ea6;--gray-600:#555a63;--gray-800:#2a2d33;
---serif:'Cormorant Garamond',Georgia,serif;
---sans:'Source Sans 3','Segoe UI',sans-serif;
---max-w:1140px;--section-py:100px;
-}
-html{scroll-behavior:smooth;font-size:16px}
-body{font-family:var(--sans);color:var(--black);background:var(--white);line-height:1.7;-webkit-font-smoothing:antialiased;overflow-x:hidden}
-img{max-width:100%;display:block}
-a{color:var(--blue);text-decoration:none}
-.container{max-width:var(--max-w);margin:0 auto;padding:0 32px}
-.section-label{font-family:var(--sans);font-weight:700;font-size:.75rem;letter-spacing:.15em;text-transform:uppercase;color:var(--blue);margin-bottom:12px}
-.section-heading{font-family:var(--serif);font-weight:700;font-size:2.6rem;line-height:1.15;color:var(--black);margin-bottom:20px}
-.section-subheading{font-size:1.15rem;color:var(--gray-600);max-width:640px;line-height:1.65}
-.btn{display:inline-block;font-family:var(--sans);font-weight:600;font-size:.95rem;padding:14px 32px;border-radius:4px;cursor:pointer;transition:background .25s,color .25s,transform .2s;border:none}
-.btn:hover{transform:translateY(-1px)}
-.btn-primary{background:var(--blue);color:var(--white)}
-.btn-primary:hover{background:var(--blue-dark)}
-.reveal{opacity:0;transform:translateY(32px);transition:opacity .7s cubic-bezier(.23,1,.32,1),transform .7s cubic-bezier(.23,1,.32,1)}
-.reveal.visible{opacity:1;transform:translateY(0)}
-.reveal-d1{transition-delay:.1s}
-.reveal-d2{transition-delay:.2s}
-.reveal-d3{transition-delay:.3s}
-.reveal-d4{transition-delay:.4s}
-nav{position:fixed;top:0;left:0;right:0;z-index:1000;background:var(--white);border-bottom:1px solid var(--gray-200);height:72px;display:flex;align-items:center;transition:box-shadow .3s}
-nav.scrolled{box-shadow:0 2px 16px rgba(0,0,0,.06)}
-nav .container{display:flex;align-items:center;justify-content:space-between;width:100%}
-nav .nav-logo img{height:42px}
-nav .nav-links{display:flex;gap:32px;list-style:none}
-nav .nav-links a{font-family:var(--sans);font-weight:600;font-size:.85rem;letter-spacing:.04em;text-transform:uppercase;color:var(--gray-800);transition:color .2s;position:relative}
-nav .nav-links a::after{content:'';position:absolute;bottom:-4px;left:0;width:0;height:2px;background:var(--blue);transition:width .25s}
-nav .nav-links a:hover{color:var(--blue)}
-nav .nav-links a:hover::after{width:100%}
-.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:8px;z-index:1001}
-.hamburger span{display:block;width:24px;height:2px;background:var(--gray-800);transition:transform .3s,opacity .3s}
-.hamburger.active span:nth-child(1){transform:translateY(7px) rotate(45deg)}
-.hamburger.active span:nth-child(2){opacity:0}
-.hamburger.active span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
-.mobile-nav{position:fixed;top:0;left:0;right:0;bottom:0;background:var(--white);z-index:999;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:28px;opacity:0;pointer-events:none;transition:opacity .3s}
-.mobile-nav.open{opacity:1;pointer-events:auto}
-.mobile-nav a{font-family:var(--serif);font-weight:700;font-size:2rem;color:var(--black);transition:color .2s}
-.mobile-nav a:hover{color:var(--blue)}
-.hero{padding-top:160px;padding-bottom:var(--section-py);background:var(--white);text-align:center}
-.hero .hero-wordmark{margin:0 auto 48px;max-width:480px}
-.hero h1{font-family:var(--serif);font-weight:700;font-size:3.2rem;line-height:1.12;color:var(--black);max-width:780px;margin:0 auto 24px}
-.hero .hero-sub{font-size:1.15rem;color:var(--gray-600);max-width:640px;margin:0 auto 40px;line-height:1.7}
-.problem{background:var(--gray-50);padding:var(--section-py) 0}
-.problem-grid{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:start}
-.problem-grid .left .section-heading{color:var(--blue)}
-.problem-grid .right ul{list-style:none;padding:0}
-.problem-grid .right ul li{position:relative;padding-left:20px;margin-bottom:18px;font-size:1rem;color:var(--gray-800);line-height:1.65}
-.problem-grid .right ul li::before{content:'';position:absolute;left:0;top:10px;width:6px;height:6px;background:var(--blue);border-radius:50%}
-.about{padding:var(--section-py) 0}
-.team-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:36px}
-.team-card{text-align:center}
-.team-photo{width:180px;height:240px;border-radius:6px;object-fit:cover;margin:0 auto 20px}
-.team-card h3{font-family:var(--serif);font-weight:700;font-size:1.35rem;margin-bottom:4px;color:var(--black)}
-.team-card .team-role{font-family:var(--sans);font-weight:600;font-size:.85rem;letter-spacing:.04em;text-transform:uppercase;color:var(--blue);margin-bottom:12px}
-.team-card p{font-size:.95rem;color:var(--gray-600);line-height:1.65;max-width:320px;margin:0 auto}
-.how{padding:var(--section-py) 0}
-.how .header{text-align:center;margin-bottom:60px}
-.how .header .section-subheading{margin:0 auto}
-.steps-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:32px;margin-bottom:64px}
-.step-card{position:relative;border-top:3px solid var(--blue);padding-top:24px}
-.step-num{font-family:var(--serif);font-weight:700;font-size:2.4rem;line-height:1;color:var(--blue);margin-bottom:12px}
-.step-card h3{font-family:var(--sans);font-weight:700;font-size:1.05rem;margin-bottom:8px;color:var(--black)}
-.step-card p{font-size:.92rem;color:var(--gray-600);line-height:1.6}
-.example-box{background:var(--blue-light);border-radius:6px;padding:48px 40px;text-align:center}
-.example-box h3{font-family:var(--serif);font-weight:700;font-size:1.7rem;margin-bottom:32px;color:var(--black)}
-.example-row{display:grid;grid-template-columns:repeat(3,1fr);gap:32px;max-width:860px;margin:0 auto 28px}
-.example-stat .num{font-family:var(--serif);font-weight:700;font-size:2.4rem;color:var(--blue);line-height:1.1}
-.example-stat .lbl{font-size:.85rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--gray-600);margin-top:6px}
-.example-box .fine{font-size:.95rem;color:var(--gray-800);max-width:640px;margin:0 auto;line-height:1.65}
-.contact{padding:var(--section-py) 0}
-.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:start}
-.contact-info{margin-top:32px}
-.contact-info p{color:var(--gray-600);margin-bottom:24px;line-height:1.65}
-.contact-info .detail{margin-bottom:12px;font-weight:600;color:var(--black)}
-.contact-info .detail span{color:var(--gray-600);font-weight:400}
-.contact-form label{display:block;font-size:.85rem;font-weight:600;margin-bottom:6px;color:var(--gray-800)}
-.contact-form input,.contact-form textarea{width:100%;font-family:var(--sans);font-size:.95rem;padding:12px 14px;border:1px solid var(--gray-200);border-radius:4px;margin-bottom:20px;outline:none;transition:border-color .2s,box-shadow .2s;background:var(--white)}
-.contact-form input:focus,.contact-form textarea:focus{border-color:var(--blue);box-shadow:0 0 0 3px rgba(33,95,154,.1)}
-.contact-form textarea{resize:vertical;min-height:120px}
-footer{background:var(--black);color:rgba(255,255,255,.6);padding:48px 0 32px}
-footer .container{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:24px}
-footer .footer-logo img{height:36px}
-footer .footer-links{display:flex;gap:28px;list-style:none}
-footer .footer-links a{font-size:.8rem;font-weight:600;letter-spacing:.04em;text-transform:uppercase;color:rgba(255,255,255,.5);transition:color .2s}
-footer .footer-links a:hover{color:var(--white)}
-footer .copyright{font-size:.8rem;width:100%;text-align:center;margin-top:24px}
-@media(max-width:900px){
-.problem-grid,.contact-grid{grid-template-columns:1fr;gap:36px}
-.team-grid{grid-template-columns:1fr}
-.steps-grid,.example-row{grid-template-columns:1fr}
-.example-box{padding:36px 24px}
-.hero h1{font-size:2.2rem}
-.hero{padding-top:120px}
-.section-heading{font-size:2rem}
-nav .nav-links{display:none}
-.hamburger{display:flex}
-:root{--section-py:64px}
-.container{padding:0 20px}
-}
+  :root{
+    --paper:#F5F6F3;
+    --white:#FFFFFF;
+    --ink:#12181F;
+    --slate:#586B78;
+    --slate-soft:#8996A0;
+    --accent:#2F6DB5;
+    --accent-dark:#1F4E80;
+    --line:#DBDFD8;
+    --font-display:'Public Sans', system-ui, sans-serif;
+    --font-body:'Source Serif 4', Georgia, serif;
+    --font-mono:'IBM Plex Mono', ui-monospace, monospace;
+  }
+  *,*::before,*::after{ box-sizing:border-box; }
+  html{ scroll-behavior:smooth; }
+  @media (prefers-reduced-motion:reduce){ html{ scroll-behavior:auto; } }
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:var(--font-body);
+    font-size:1.0625rem;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  ::selection{ background:#DCE8F5; }
+  h1,h2,h3{ font-family:var(--font-display); margin:0; letter-spacing:-0.01em; }
+  a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible{
+    outline:2px solid var(--accent); outline-offset:3px;
+  }
+
+  .wrap{
+    max-width:620px;
+    margin:0 auto;
+    padding:4rem 1.5rem 3rem;
+  }
+
+  /* --- masthead --- */
+  .masthead{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    flex-wrap:wrap;
+    gap:0.9rem;
+    margin-bottom:3rem;
+  }
+  .mark{
+    display:flex; align-items:center; gap:0.6em;
+    font-family:var(--font-mono);
+    font-size:0.8125rem;
+    letter-spacing:0.09em;
+    text-transform:uppercase;
+    color:var(--ink);
+  }
+  .mark::before{
+    content:""; width:9px; height:9px;
+    background:var(--accent); border-radius:1px;
+    transform:rotate(45deg); flex:none;
+  }
+  nav{ display:flex; gap:0.4rem; flex-wrap:wrap; }
+  nav a{
+    font-family:var(--font-mono);
+    font-size:0.7rem;
+    letter-spacing:0.09em;
+    text-transform:uppercase;
+    color:var(--slate);
+    text-decoration:none;
+    border:1px solid var(--line);
+    border-radius:999px;
+    padding:0.4rem 0.7rem;
+    white-space:nowrap;
+    transition:border-color .15s ease, color .15s ease, background .15s ease;
+  }
+  nav a:hover{ color:var(--ink); border-color:var(--slate-soft); background:var(--white); }
+
+  /* anchor offset so headings aren't flush to the top edge */
+  [id]{ scroll-margin-top:1.5rem; }
+  #top{ scroll-margin-top:2.5rem; }
+
+  /* --- brief --- */
+  h1{
+    font-size:clamp(1.9rem, 4vw + 1rem, 2.6rem);
+    line-height:1.15;
+    margin-bottom:1.25rem;
+  }
+  h1 em{ font-style:normal; color:var(--accent-dark); }
+
+  .lede{ font-size:1.15rem; margin:0 0 1.25rem; }
+  .brief p{ margin:0 0 1.25rem; color:var(--slate); }
+  .brief p strong{ color:var(--ink); font-weight:500; }
+
+  hr{
+    border:none;
+    border-top:1px solid var(--line);
+    margin:2.75rem 0;
+  }
+
+  /* --- steps --- */
+  .steps{
+    list-style:none;
+    margin:0 0 0;
+    padding:0;
+    counter-reset:step;
+  }
+  .steps li{
+    display:flex;
+    gap:1rem;
+    padding:0.85rem 0;
+    border-bottom:1px solid var(--line);
+    align-items:baseline;
+  }
+  .steps li:last-child{ border-bottom:none; }
+  .steps li::before{
+    counter-increment:step;
+    content:"0" counter(step);
+    font-family:var(--font-mono);
+    font-size:0.75rem;
+    color:var(--accent-dark);
+    flex:none;
+    padding-top:0.15em;
+  }
+  .steps b{
+    font-family:var(--font-display);
+    font-weight:600;
+    font-size:1rem;
+    display:block;
+    margin-bottom:0.25rem;
+  }
+  .steps span{ color:var(--slate); font-size:0.98rem; display:block; }
+
+  h2{
+    font-size:1.25rem;
+    margin-bottom:1rem;
+  }
+  .section-note{
+    font-family:var(--font-mono);
+    font-size:0.72rem;
+    letter-spacing:0.12em;
+    text-transform:uppercase;
+    color:var(--accent-dark);
+    display:block;
+    margin-bottom:0.75rem;
+  }
+
+  /* --- team --- */
+  .team{ display:grid; grid-template-columns:1fr 1fr; gap:1.5rem; }
+  .person{ display:flex; gap:0.85rem; align-items:flex-start; }
+  .person .initials{
+    width:38px; height:38px; flex:none;
+    border-radius:50%;
+    background:var(--ink);
+    color:var(--paper);
+    font-family:var(--font-mono);
+    font-size:0.78rem;
+    display:flex; align-items:center; justify-content:center;
+  }
+  .person .name-row{
+    display:flex;
+    align-items:baseline;
+    gap:0.5rem;
+    flex-wrap:wrap;
+  }
+  .person b{
+    font-family:var(--font-display);
+    font-weight:600;
+    font-size:1rem;
+  }
+  .person .cred{
+    font-family:var(--font-mono);
+    font-size:0.7rem;
+    letter-spacing:0.08em;
+    color:var(--accent-dark);
+  }
+  .person .role{
+    font-family:var(--font-display);
+    font-size:0.8125rem;
+    font-weight:500;
+    color:var(--slate);
+    display:block;
+    margin:0.15rem 0 0.45rem;
+  }
+  .person p{ margin:0; color:var(--slate); font-size:0.95rem; line-height:1.5; }
+  @media (max-width:520px){
+    .team{ grid-template-columns:1fr; gap:1.25rem; }
+  }
+
+  /* --- form --- */
+  .form-card{
+    background:var(--white);
+    border:1px solid var(--line);
+    border-radius:6px;
+    padding:1.75rem;
+  }
+  .field{ margin-bottom:1.1rem; }
+  .field:last-of-type{ margin-bottom:1.5rem; }
+  label{
+    display:block;
+    font-family:var(--font-display);
+    font-weight:600;
+    font-size:0.875rem;
+    margin-bottom:0.45rem;
+  }
+  label .opt{ font-weight:400; color:var(--slate-soft); }
+  input, select, textarea{
+    width:100%;
+    font-family:var(--font-body);
+    font-size:1rem;
+    color:var(--ink);
+    background:var(--paper);
+    border:1px solid var(--line);
+    border-radius:4px;
+    padding:0.7rem 0.8rem;
+    transition:border-color .15s ease;
+  }
+  input:hover, select:hover, textarea:hover{ border-color:var(--slate-soft); }
+  textarea{ resize:vertical; min-height:80px; font-family:var(--font-body); }
+  select{ appearance:none; background-image:linear-gradient(45deg,transparent 50%,var(--slate) 50%),linear-gradient(135deg,var(--slate) 50%,transparent 50%); background-position:calc(100% - 18px) 50%, calc(100% - 13px) 50%; background-size:5px 5px,5px 5px; background-repeat:no-repeat; }
+
+  button{
+    width:100%;
+    font-family:var(--font-display);
+    font-weight:600;
+    font-size:0.9375rem;
+    color:var(--paper);
+    background:var(--ink);
+    border:none;
+    border-radius:4px;
+    padding:0.95rem;
+    cursor:pointer;
+    transition:background .18s ease;
+  }
+  button:hover{ background:var(--accent-dark); }
+
+  .form-foot{
+    font-size:0.85rem;
+    color:var(--slate-soft);
+    margin:0.9rem 0 0;
+    text-align:center;
+    line-height:1.5;
+  }
+
+  .confirm{
+    display:none;
+    text-align:center;
+    padding:1rem 0 0.5rem;
+  }
+  .confirm.on{ display:block; }
+  .confirm .tick{
+    width:38px; height:38px;
+    border-radius:50%;
+    background:var(--accent);
+    color:var(--white);
+    display:flex; align-items:center; justify-content:center;
+    margin:0 auto 0.9rem;
+    font-size:1.1rem;
+  }
+  .confirm h3{ font-size:1.05rem; margin-bottom:0.4rem; }
+  .confirm p{ color:var(--slate); font-size:0.95rem; margin:0; }
+
+  footer{
+    margin-top:2.5rem;
+    text-align:center;
+    font-size:0.8125rem;
+    color:var(--slate-soft);
+  }
+  footer a{ color:var(--slate); text-decoration:none; }
+  footer a:hover{ color:var(--ink); }
 </style>
 </head>
 <body>
-<nav id="mainNav"><div class="container">
-<a href="#hero" class="nav-logo">
-<img src="BCA Logo Light.png" alt="BCA Logo">
-</a>
-<ul class="nav-links">
-<li><a href="#hero">Home</a></li>
-<li><a href="#how">How It Works</a></li>
-<li><a href="#about">About</a></li>
-<li><a href="#contact">Contact</a></li>
-</ul>
-<div class="hamburger" id="hamburger" aria-label="Menu" role="button" tabindex="0">
-<span></span><span></span><span></span>
-</div>
-</div></nav>
-<div class="mobile-nav" id="mobileNav">
-<a href="#hero" class="mobile-link">Home</a>
-<a href="#how" class="mobile-link">How It Works</a>
-<a href="#about" class="mobile-link">About</a>
-<a href="#contact" class="mobile-link">Contact</a>
-</div>
 
-<section class="hero" id="hero"><div class="container">
-<div class="hero-wordmark reveal">
-<img src="Brucker Cyber Advisors Logo Light.png" alt="Brucker Cyber Advisors">
-</div>
-<h1 class="reveal reveal-d1">Lower Your Cyber Insurance Premium. Pay Nothing Unless You Save.</h1>
-<p class="hero-sub reveal reveal-d2">Brucker Cyber Advisors reviews your policy, puts in place the security controls insurers price against, and builds the evidence your carrier needs to reprice your risk. Our fee comes out of your savings. If your premium doesn't drop, you owe us nothing.</p>
-<a href="#contact" class="btn btn-primary reveal reveal-d3">Get a Free Premium Review</a>
-</div></section>
+<div class="wrap">
 
-<section class="problem" id="problem"><div class="container"><div class="problem-grid">
-<div class="left reveal">
-<div class="section-label">The Problem</div>
-<h2 class="section-heading">You're Probably Overpaying for Cyber Insurance.</h2>
-</div>
-<div class="right reveal reveal-d2"><ul>
-<li>Most small and midsize businesses fill out underwriting questionnaires defensively and can't produce evidence for controls they already have. The result is a higher rate at every renewal.</li>
-</ul></div></div></div></section>
+  <div class="masthead" id="top">
+    <div class="mark">Brucker Cyber Advisors</div>
+    <nav>
+      <a href="#top">Home</a>
+      <a href="#how">How it works</a>
+      <a href="#team">About</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </div>
 
-<section class="how" id="how"><div class="container">
-<div class="header reveal">
-<div class="section-label">How It Works</div>
-<h2 class="section-heading">One Engagement, Four Steps.</h2>
-</div>
-<div class="steps-grid">
-<div class="step-card reveal reveal-d1"><div class="step-num">1</div><h3>Policy &amp; Contract Review</h3><p>We analyze your current cyber insurance policy, underwriting questionnaire, and renewal terms to find what your carrier prices against and where you're being penalized.</p></div>
-<div class="step-card reveal reveal-d2"><div class="step-num">2</div><h3>Control Identification</h3><p>We map the gap between your current security posture and the controls that qualify you for a lower premium.</p></div>
-<div class="step-card reveal reveal-d3"><div class="step-num">3</div><h3>Implementation &amp; Evidence</h3><p>We guide implementation of the missing controls, from MFA and endpoint detection to backup hardening and incident response planning, and assemble the evidence your carrier needs to reprice your risk at renewal.</p></div>
-<div class="step-card reveal reveal-d4"><div class="step-num">4</div><h3>Savings</h3><p>Your premium drops, and the security improvements are yours to keep.</p></div>
-</div>
-<div class="example-box reveal">
-<h3>The Math, With Real Numbers</h3>
-<div class="example-row">
-<div class="example-stat"><div class="num">$40,000/yr</div><div class="lbl">Your Premium Today</div></div>
-<div class="example-stat"><div class="num">$34,000/yr</div><div class="lbl">Your Premium After BCA</div></div>
-<div class="example-stat"><div class="num">$0</div><div class="lbl">Your Upfront Cost</div></div>
-</div>
-<p class="fine">Broker data shows that documented MFA, endpoint detection, and tested backups cut premiums by 5 to 15 percent. For a mid-size business, that means a $40,000 annual premium dropping to somewhere between $34,000 and $38,000. In this example our work saves you $6,000 a year. If we can't reduce your premium, you pay nothing.</p>
-</div>
-</div></section>
+  <div class="brief">
+    <h1>Lower your cyber insurance premium. <em>Pay nothing unless you save.</em></h1>
 
-<section class="about" id="about"><div class="container">
-<div class="section-label reveal">About</div>
-<h2 class="section-heading reveal reveal-d1">Meet the Team</h2>
-<div class="team-grid">
-<div class="team-card reveal reveal-d1">
-<img class="team-photo" src="Theo.jpg" alt="Theo Brucker">
-<h3>Theo Brucker, CISSP</h3>
-<div class="team-role">Partner &mdash; Security Engineering</div>
-<p>Theo is a cybersecurity professional with experience spanning incident response, security architecture, software development, and compliance. He holds the CISSP and CCP certifications and has built and led full security programs, covering the same controls underwriters price against, for organizations in both the defense and commercial sectors.</p>
-</div>
-<div class="team-card reveal reveal-d2">
-<img class="team-photo" src="Mac.jpg" alt="Mac Brucker">
-<h3>Mac Brucker, CISM</h3>
-<div class="team-role">Partner &mdash; Security &amp; Risk Consulting</div>
-<p>Mac brings deep expertise in security risk management, policy development, and governance, and holds the CISM certification. He provides program oversight that ensures every control implementation and security policy aligns with your organization's risk tolerance and your carrier's underwriting requirements.</p>
-</div>
-</div></div></section>
+    <p class="lede">Brucker Cyber Advisors reviews your cyber insurance policy and identifies the gaps in your security controls driving up your premiums. We then help you build the evidence your carrier needs to re-price your risk.</p>
 
-<section class="contact" id="contact"><div class="container">
-<div class="section-label reveal">Get In Touch</div>
-<h2 class="section-heading reveal reveal-d1">Find Out What You Could Save</h2>
-<div class="contact-grid">
-<div class="contact-info reveal reveal-d2">
-<p>Tell us your renewal date and roughly what you pay today. We'll review your situation and tell you, at no cost, whether we think we can lower it. If we can't, we'll say so.</p>
-</div>
-<div class="reveal reveal-d3">
-<form class="contact-form" name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field" action="/success">
-<input type="hidden" name="form-name" value="contact">
-<p style="position:absolute;left:-9999px" aria-hidden="true"><label>Leave this field empty <input name="bot-field" autocomplete="off" tabindex="-1"></label></p>
-<label for="c_name">Name</label><input type="text" id="c_name" name="name" placeholder="Your name" required>
-<label for="c_email">Email</label><input type="email" id="c_email" name="email" placeholder="you@company.com" required>
-<label for="c_company">Company</label><input type="text" id="c_company" name="company" placeholder="Company name">
-<label for="c_phone">Phone Number</label><input type="text" id="c_phone" name="phone" placeholder="(000) 000-0000">
-<label for="c_message">Message</label><textarea id="c_message" name="message" placeholder="Your current premium, renewal date, and anything else we should know..." required></textarea>
-<button class="btn btn-primary" type="submit">Send Message</button>
-</form>
-</div>
-</div></div></section>
+    <p>Our fee comes out of your first-year savings. If your premium doesn't drop, you owe us nothing.</p>
+  </div>
 
-<footer><div class="container">
-<div class="footer-logo">
-<img src="Brucker Cyber Advisors Logo Dark.png" alt="Brucker Cyber Advisors Logo">
+  <hr>
+
+  <span class="section-note" id="how">How it works</span>
+  <ol class="steps">
+    <li><div><b>Policy &amp; contract review</b> <span>We analyze your current cyber insurance policy, underwriting questionnaire, and renewal terms to find what your carrier prices against and where you're being penalized.</span></div></li>
+    <li><div><b>Control identification</b> <span>We map the gap between your current security posture and the controls most likely to qualify you for a lower premium.</span></div></li>
+    <li><div><b>Implementation &amp; evidence collection</b> <span>We guide the implementation of any deficient security controls, and assemble the documented evidence your carrier needs to re-price your risk at renewal.</span></div></li>
+    <li><div><b>Savings</b> <span>You renew your policy with the newly implemented controls and documented evidence in hand, and your premium drops. The security improvements are yours to keep.</span></div></li>
+  </ol>
+
+  <hr>
+
+  <h2 id="team">About the team</h2>
+  <div class="team">
+    <div class="person">
+      <div class="initials">TB</div>
+      <div>
+        <div class="name-row"><b>Theo Brucker</b><span class="cred">CISSP</span></div>
+        <span class="role">Partner - Security Engineering</span>
+        <p>Based in Dover, NH, Theo specializes in the technical controls: access management, network and endpoint security, and incident response.</p>
+      </div>
+    </div>
+    <div class="person">
+      <div class="initials">MB</div>
+      <div>
+        <div class="name-row"><b>Mac Brucker</b><span class="cred">CISM</span></div>
+        <span class="role">Partner - Security &amp; Risk Consulting</span>
+        <p>Based in Portland, ME, Mac specializes in security governance and program management: risk assessments, policy development, and reporting structures.</p>
+      </div>
+    </div>
+  </div>
+
+  <hr>
+
+  <span class="section-note" id="contact">Get in touch</span>
+  <h2>Tell us about your organization.</h2>
+
+  <div class="form-card">
+    <div id="formBody">
+      <div class="field">
+        <label for="name">Name</label>
+        <input type="text" id="name" name="name" autocomplete="name">
+      </div>
+      <div class="field">
+        <label for="company">Organization</label>
+        <input type="text" id="company" name="company" autocomplete="organization">
+      </div>
+      <div class="field">
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email" autocomplete="email">
+      </div>
+      <div class="field">
+        <label for="industry">Industry <span class="opt">(optional)</span></label>
+        <input type="text" id="industry" name="industry" placeholder="Healthcare, manufacturing, professional services...">
+      </div>
+      <div class="field">
+        <label for="notes">Anything we should know <span class="opt">(optional)</span></label>
+        <textarea id="notes" name="notes" placeholder="Renewal date, current carrier, or what prompted you to reach out."></textarea>
+      </div>
+      <button type="button" id="submitBtn">Request a review</button>
+      <p class="form-foot">We'll reply within two business days. No cost, no obligation.</p>
+    </div>
+
+    <div class="confirm" id="confirm">
+      <div class="tick">&#10003;</div>
+      <h3>Thanks, we've got it.</h3>
+      <p>We'll be in touch within two business days.</p>
+    </div>
+  </div>
+
+  <footer>
+    <a href="https://bruckercyber.com">bruckercyber.com</a>
+  </footer>
+
 </div>
-<ul class="footer-links">
-<li><a href="#hero">Home</a></li>
-<li><a href="#how">How It Works</a></li>
-<li><a href="#about">About</a></li>
-<li><a href="#contact">Contact</a></li>
-</ul>
-<div class="copyright">&copy; 2026 Brucker Cyber Advisors. All rights reserved.</div>
-</div></footer>
 
 <script>
-(function(){
-  var nav=document.getElementById('mainNav');
-  window.addEventListener('scroll',function(){
-    if(window.scrollY>10)nav.classList.add('scrolled');
-    else nav.classList.remove('scrolled');
+  document.getElementById('submitBtn').addEventListener('click', function(){
+    var email = document.getElementById('email').value.trim();
+    var name  = document.getElementById('name').value.trim();
+    if (!name || !email || email.indexOf('@') === -1) {
+      alert('Please add your name and a valid email.');
+      return;
+    }
+    document.getElementById('formBody').style.display = 'none';
+    document.getElementById('confirm').classList.add('on');
   });
-})();
-(function(){
-  var h=document.getElementById('hamburger'),m=document.getElementById('mobileNav'),links=m.querySelectorAll('.mobile-link');
-  function t(){h.classList.toggle('active');m.classList.toggle('open');document.body.style.overflow=m.classList.contains('open')?'hidden':'';}
-  h.addEventListener('click',t);
-  h.addEventListener('keydown',function(e){if(e.key==='Enter')t();});
-  links.forEach(function(a){a.addEventListener('click',function(){h.classList.remove('active');m.classList.remove('open');document.body.style.overflow='';});});
-})();
-(function(){
-  var els=document.querySelectorAll('.reveal');
-  var obs=new IntersectionObserver(function(entries){entries.forEach(function(e){if(e.isIntersecting){e.target.classList.add('visible');obs.unobserve(e.target);}});},{threshold:0.15});
-  els.forEach(function(el){obs.observe(el);});
-})();
 </script>
-</body></html>
+
+</body>
+</html>
