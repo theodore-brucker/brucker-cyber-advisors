@@ -28,6 +28,7 @@
   @media (prefers-reduced-motion:reduce){ html{ scroll-behavior:auto; } }
   body{
     margin:0;
+    position:relative;
     background:var(--paper);
     color:var(--ink);
     font-family:var(--font-body);
@@ -52,7 +53,6 @@
     z-index:0;
   }
   .wrap{ position:relative; z-index:1; }
-
   /* --- motion --- */
   .reveal{
     opacity:0;
@@ -472,6 +472,19 @@
   }
   footer a{ color:var(--slate); text-decoration:none; }
   footer .legal{ display:block; margin-top:0.4rem; }
+  footer .disclaimer{
+    text-align:left;
+    border-top:1px solid var(--line);
+    padding-top:1.5rem;
+    margin-bottom:1.75rem;
+  }
+  footer .disclaimer p{
+    font-size:0.75rem;
+    line-height:1.55;
+    color:var(--slate-soft);
+    margin:0 0 0.7rem;
+  }
+  footer .disclaimer p:last-child{ margin-bottom:0; }
   footer a:hover{ color:var(--ink); }
 </style>
 </head>
@@ -578,6 +591,10 @@
   </div>
 
   <footer>
+    <div class="disclaimer">
+      <p>Brucker Cyber Advisors, LLC provides information security consulting services only. The firm does not sell, solicit, negotiate, or place insurance of any kind, and is not a licensed insurance producer, broker, or adjuster in any jurisdiction. No content on this website constitutes insurance, legal, regulatory, or compliance advice, and no attorney-client or fiduciary relationship is created by its use. All decisions regarding insurance coverage remain solely those of the client, made in consultation with its licensed broker or carrier.</p>
+      <p>Outcomes vary according to carrier underwriting criteria, existing coverage terms, and the client's technology environment. No representation or warranty is made as to any particular premium reduction, and no specific result is guaranteed.</p>
+    </div>
     <a href="https://bruckercyber.com">bruckercyber.com</a>
     <span class="legal">&copy; <span id="year">2026</span> Brucker Cyber Advisors, LLC</span>
   </footer>
