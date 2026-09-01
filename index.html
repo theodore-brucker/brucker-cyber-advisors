@@ -95,9 +95,7 @@
     z-index:50;
     margin:0 -1.5rem 3rem;
     padding:0.85rem 1.5rem;
-    background:rgba(245,246,243,0.85);
-    backdrop-filter:blur(10px);
-    -webkit-backdrop-filter:blur(10px);
+    background:var(--white);
     border-bottom:1px solid transparent;
     transition:border-color .2s ease, box-shadow .2s ease;
   }
@@ -109,9 +107,10 @@
     display:flex; align-items:center; gap:0.6em;
     font-family:var(--font-mono);
     font-size:0.8125rem;
+    font-weight:600;
     letter-spacing:0.09em;
     text-transform:uppercase;
-    color:var(--ink);
+    color:var(--accent-dark);
   }
   .mark img{
     height:clamp(24px, 6vw, 40px);
@@ -156,9 +155,10 @@
   nav a{
     font-family:var(--font-mono);
     font-size:0.7rem;
+    font-weight:600;
     letter-spacing:0.09em;
     text-transform:uppercase;
-    color:var(--slate);
+    color:var(--accent-dark);
     text-decoration:none;
     border:1px solid var(--line);
     border-radius:999px;
