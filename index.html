@@ -34,6 +34,44 @@
     -webkit-font-smoothing:antialiased;
   }
   ::selection{ background:#DCE8F5; }
+
+  /* ambient wash behind the top of the page */
+  body::before{
+    content:"";
+    position:fixed;
+    top:0; left:50%;
+    transform:translateX(-50%);
+    width:min(1100px, 140vw);
+    height:520px;
+    background:
+      radial-gradient(60% 70% at 30% 0%, rgba(47,109,181,0.13), transparent 70%),
+      radial-gradient(50% 60% at 78% 8%, rgba(47,109,181,0.07), transparent 70%);
+    pointer-events:none;
+    z-index:0;
+  }
+  .wrap{ position:relative; z-index:1; }
+
+  /* --- motion --- */
+  .reveal{
+    opacity:0;
+    transform:translateY(16px);
+    transition:opacity .65s cubic-bezier(.16,.8,.3,1), transform .65s cubic-bezier(.16,.8,.3,1);
+  }
+  .reveal.in{ opacity:1; transform:none; }
+
+  @keyframes rise{
+    from{ opacity:0; transform:translateY(14px); }
+    to{ opacity:1; transform:none; }
+  }
+  .masthead{ animation:rise .7s cubic-bezier(.16,.8,.3,1) both; }
+  .brief h1{ animation:rise .8s cubic-bezier(.16,.8,.3,1) both .08s; }
+  .brief .lede{ animation:rise .8s cubic-bezier(.16,.8,.3,1) both .18s; }
+  .brief p:last-child{ animation:rise .8s cubic-bezier(.16,.8,.3,1) both .28s; }
+
+  @media (prefers-reduced-motion:reduce){
+    .reveal{ opacity:1; transform:none; transition:none; }
+    .masthead, .brief h1, .brief .lede, .brief p:last-child{ animation:none; }
+  }
   h1,h2,h3{ font-family:var(--font-display); margin:0; letter-spacing:-0.01em; }
   a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible{
     outline:2px solid var(--accent); outline-offset:3px;
@@ -81,7 +119,8 @@
     white-space:nowrap;
     transition:border-color .15s ease, color .15s ease, background .15s ease;
   }
-  nav a:hover{ color:var(--ink); border-color:var(--slate-soft); background:var(--white); }
+  nav a:hover{ color:var(--white); border-color:var(--accent); background:var(--accent); }
+  nav a.active{ color:var(--accent-dark); border-color:var(--accent); background:var(--white); }
 
   /* anchor offset so headings aren't flush to the top edge */
   [id]{ scroll-margin-top:1.5rem; }
@@ -93,7 +132,18 @@
     line-height:1.15;
     margin-bottom:1.25rem;
   }
-  h1 em{ font-style:normal; color:var(--accent-dark); }
+  h1 em{
+    font-style:normal;
+    color:var(--accent-dark);
+    background-image:linear-gradient(transparent 62%, rgba(47,109,181,0.18) 0);
+    background-repeat:no-repeat;
+    background-size:0% 100%;
+    animation:underline 1s cubic-bezier(.16,.8,.3,1) forwards .7s;
+  }
+  @keyframes underline{ to{ background-size:100% 100%; } }
+  @media (prefers-reduced-motion:reduce){
+    h1 em{ animation:none; background-size:100% 100%; }
+  }
 
   .lede{ font-size:1.15rem; margin:0 0 1.25rem; }
   .brief p{ margin:0 0 1.25rem; color:var(--slate); }
@@ -115,32 +165,58 @@
   .steps li{
     display:flex;
     gap:1rem;
-    padding:0.85rem 0;
+    padding:0.95rem 0.9rem 0.95rem 0.75rem;
     border-bottom:1px solid var(--line);
-    align-items:baseline;
+    align-items:flex-start;
+    border-radius:6px;
+    transition:background .25s ease, transform .25s ease;
   }
+  .steps li:hover{ background:var(--white); transform:translateX(3px); }
   .steps li:last-child{ border-bottom:none; }
   .steps li::before{
     counter-increment:step;
-    content:"0" counter(step);
+    content:counter(step);
     font-family:var(--font-mono);
-    font-size:0.75rem;
+    font-size:0.72rem;
     color:var(--accent-dark);
+    background:rgba(47,109,181,0.10);
+    border:1px solid rgba(47,109,181,0.22);
+    width:24px; height:24px;
+    border-radius:50%;
+    display:flex; align-items:center; justify-content:center;
     flex:none;
-    padding-top:0.15em;
+    margin-top:0.1em;
+    transition:background .25s ease, color .25s ease, border-color .25s ease;
   }
+  .steps li:hover::before{ background:var(--accent); border-color:var(--accent); color:var(--white); }
   .steps b{
     font-family:var(--font-display);
     font-weight:600;
     font-size:1rem;
-    display:block;
-    margin-bottom:0.25rem;
+    display:inline;
   }
-  .steps span{ color:var(--slate); font-size:0.98rem; display:block; }
+  .steps span{ color:var(--slate); font-size:0.98rem; display:inline; }
 
   h2{
     font-size:1.25rem;
     margin-bottom:1rem;
+  }
+  h2.section-head{
+    color:var(--accent-dark);
+    display:inline-block;
+    background-image:
+      linear-gradient(var(--accent) 0 0),
+      linear-gradient(transparent 62%, rgba(88,107,120,0.18) 0);
+    background-repeat:no-repeat;
+    background-size:0% 2px, 0% 100%;
+    background-position:0 100%, 0 0;
+    padding-bottom:0.18em;
+  }
+  h2.section-head.in{ animation:sweep .9s cubic-bezier(.16,.8,.3,1) forwards .12s; }
+  @keyframes sweep{ to{ background-size:100% 2px, 100% 100%; } }
+  @media (prefers-reduced-motion:reduce){
+    h2.section-head{ background-size:100% 2px, 100% 100%; }
+    h2.section-head.in{ animation:none; }
   }
   .section-note{
     font-family:var(--font-mono);
@@ -165,6 +241,12 @@
     background:var(--ink);
     display:block;
     margin-bottom:0.85rem;
+    box-shadow:0 6px 18px rgba(18,24,31,0.12);
+    transition:transform .3s cubic-bezier(.16,.8,.3,1), box-shadow .3s ease;
+  }
+  .person:hover .photo{
+    transform:translateY(-4px);
+    box-shadow:0 14px 30px rgba(18,24,31,0.18);
   }
   .person .name-row{
     display:flex;
@@ -200,8 +282,9 @@
   .form-card{
     background:var(--white);
     border:1px solid var(--line);
-    border-radius:6px;
+    border-radius:10px;
     padding:1.75rem;
+    box-shadow:0 10px 30px rgba(18,24,31,0.07);
   }
   .field{ margin-bottom:1.1rem; }
   .field:last-of-type{ margin-bottom:1.5rem; }
@@ -225,6 +308,11 @@
     transition:border-color .15s ease;
   }
   input:hover, select:hover, textarea:hover{ border-color:var(--slate-soft); }
+  input:focus, select:focus, textarea:focus{
+    border-color:var(--accent);
+    background:var(--white);
+    box-shadow:0 0 0 3px rgba(47,109,181,0.13);
+  }
   textarea{ resize:vertical; min-height:80px; font-family:var(--font-body); }
   select{ appearance:none; background-image:linear-gradient(45deg,transparent 50%,var(--slate) 50%),linear-gradient(135deg,var(--slate) 50%,transparent 50%); background-position:calc(100% - 18px) 50%, calc(100% - 13px) 50%; background-size:5px 5px,5px 5px; background-repeat:no-repeat; }
 
@@ -239,9 +327,14 @@
     border-radius:4px;
     padding:0.95rem;
     cursor:pointer;
-    transition:background .18s ease;
+    transition:background .18s ease, transform .18s ease, box-shadow .18s ease;
   }
-  button:hover{ background:var(--accent-dark); }
+  button:hover{
+    background:var(--accent-dark);
+    transform:translateY(-2px);
+    box-shadow:0 8px 20px rgba(31,78,128,0.28);
+  }
+  button:active{ transform:translateY(0); box-shadow:none; }
 
   .form-foot{
     font-size:0.85rem;
@@ -256,7 +349,7 @@
     text-align:center;
     padding:1rem 0 0.5rem;
   }
-  .confirm.on{ display:block; }
+  .confirm.on{ display:block; animation:rise .5s cubic-bezier(.16,.8,.3,1) both; }
   .confirm .tick{
     width:38px; height:38px;
     border-radius:50%;
@@ -265,6 +358,11 @@
     display:flex; align-items:center; justify-content:center;
     margin:0 auto 0.9rem;
     font-size:1.1rem;
+    animation:pop .45s cubic-bezier(.2,1.5,.4,1) both .1s;
+  }
+  @keyframes pop{
+    from{ transform:scale(0.4); opacity:0; }
+    to{ transform:scale(1); opacity:1; }
   }
   .confirm h3{ font-size:1.05rem; margin-bottom:0.4rem; }
   .confirm p{ color:var(--slate); font-size:0.95rem; margin:0; }
@@ -306,8 +404,8 @@
 
   <hr>
 
-  <span class="section-note" id="how">The Process</span>
-  <ol class="steps">
+  <h2 class="section-head reveal" id="how">The Process</h2>
+  <ol class="steps reveal">
     <li><div><b>Policy &amp; Contract Review - </b> <span>We analyze your current cyber insurance policy, underwriting questionnaire, and renewal terms to find what your carrier prices against and where you're being penalized.</span></div></li>
     <li><div><b>Gap Identification - </b> <span>We map the gap between your current technology environment and the security controls most likely to qualify you for a lower premium.</span></div></li>
     <li><div><b>Gap Remediation &amp; Evidence Collection - </b> <span>We guide you through the implementation of any deficient security controls, then assemble the documented evidence your carrier needs to re-price your risk at renewal.</span></div></li>
@@ -316,8 +414,8 @@
 
   <hr>
 
-  <h2 id="team">The Team</h2>
-  <div class="team">
+  <h2 class="section-head reveal" id="team">The Team</h2>
+  <div class="team reveal">
     <div class="person">
       <img class="photo" src="Theo.JPG" alt="Theo Brucker">
       <div>
@@ -338,10 +436,10 @@
 
   <hr>
 
-  <span class="section-note" id="contact">Get in touch</span>
-  <h2>Tell us about your organization.</h2>
+  <span class="section-note reveal" id="contact">Get in touch</span>
+  <h2 class="reveal">Tell us about your organization.</h2>
 
-  <div class="form-card">
+  <div class="form-card reveal">
     <div id="formBody">
       <div class="field">
         <label for="name">Name</label>
@@ -381,6 +479,39 @@
 </div>
 
 <script>
+  // reveal sections as they enter the viewport
+  (function(){
+    var els = document.querySelectorAll('.reveal');
+    if (!('IntersectionObserver' in window)) {
+      els.forEach(function(el){ el.classList.add('in'); });
+      return;
+    }
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+    els.forEach(function(el){ io.observe(el); });
+  })();
+
+  // highlight the nav link for whichever section is in view
+  (function(){
+    var links = Array.prototype.slice.call(document.querySelectorAll('nav a'));
+    var targets = links
+      .map(function(a){ return document.querySelector(a.getAttribute('href')); })
+      .filter(Boolean);
+    if (!targets.length || !('IntersectionObserver' in window)) return;
+    var spy = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if (!e.isIntersecting) return;
+        links.forEach(function(a){
+          a.classList.toggle('active', a.getAttribute('href') === '#' + e.target.id);
+        });
+      });
+    }, { rootMargin: '-15% 0px -70% 0px' });
+    targets.forEach(function(t){ spy.observe(t); });
+  })();
+
   document.getElementById('submitBtn').addEventListener('click', function(){
     var email = document.getElementById('email').value.trim();
     var name  = document.getElementById('name').value.trim();
