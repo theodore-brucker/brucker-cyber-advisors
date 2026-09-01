@@ -88,9 +88,22 @@
     display:flex;
     align-items:center;
     justify-content:space-between;
-    flex-wrap:wrap;
+    flex-wrap:nowrap;
     gap:0.9rem;
-    margin-bottom:3rem;
+    position:sticky;
+    top:0;
+    z-index:50;
+    margin:0 -1.5rem 3rem;
+    padding:0.85rem 1.5rem;
+    background:rgba(245,246,243,0.85);
+    backdrop-filter:blur(10px);
+    -webkit-backdrop-filter:blur(10px);
+    border-bottom:1px solid transparent;
+    transition:border-color .2s ease, box-shadow .2s ease;
+  }
+  .masthead.stuck{
+    border-bottom-color:var(--line);
+    box-shadow:0 6px 20px rgba(18,24,31,0.06);
   }
   .mark{
     display:flex; align-items:center; gap:0.6em;
@@ -105,7 +118,41 @@
     width:auto;
     display:block;
   }
-  nav{ display:flex; gap:0.4rem; flex-wrap:wrap; }
+  .nav-toggle{
+    display:none;
+    width:auto;
+    flex:none;
+    background:transparent;
+    border:1px solid var(--line);
+    border-radius:8px;
+    padding:0.5rem 0.55rem;
+    cursor:pointer;
+    box-shadow:none;
+    transform:none;
+    align-items:center;
+    justify-content:center;
+    gap:4px;
+    flex-direction:column;
+    transition:border-color .15s ease, background .15s ease;
+  }
+  .nav-toggle:hover{
+    background:var(--white);
+    border-color:var(--slate-soft);
+    transform:none;
+    box-shadow:none;
+  }
+  .nav-toggle span{
+    display:block;
+    width:18px; height:2px;
+    background:var(--ink);
+    border-radius:2px;
+    transition:transform .22s ease, opacity .22s ease;
+  }
+  .nav-toggle[aria-expanded="true"] span:nth-child(1){ transform:translateY(6px) rotate(45deg); }
+  .nav-toggle[aria-expanded="true"] span:nth-child(2){ opacity:0; }
+  .nav-toggle[aria-expanded="true"] span:nth-child(3){ transform:translateY(-6px) rotate(-45deg); }
+
+  nav{ display:flex; gap:0.4rem; flex-wrap:nowrap; }
   nav a{
     font-family:var(--font-mono);
     font-size:0.7rem;
@@ -122,9 +169,38 @@
   nav a:hover{ color:var(--white); border-color:var(--accent); background:var(--accent); }
   nav a.active{ color:var(--accent-dark); border-color:var(--accent); background:var(--white); }
 
+  @media (max-width:720px){
+    .nav-toggle{ display:flex; }
+    nav{
+      position:absolute;
+      top:calc(100% + 0.65rem);
+      right:0;
+      flex-direction:column;
+      align-items:stretch;
+      gap:0.35rem;
+      min-width:200px;
+      padding:0.6rem;
+      background:var(--white);
+      border:1px solid var(--line);
+      border-radius:10px;
+      box-shadow:0 14px 30px rgba(18,24,31,0.14);
+      z-index:60;
+      opacity:0;
+      visibility:hidden;
+      transform:translateY(-6px);
+      transition:opacity .2s ease, transform .2s ease, visibility .2s;
+    }
+    nav.open{ opacity:1; visibility:visible; transform:none; }
+    nav a{ text-align:center; padding:0.55rem 0.7rem; }
+  }
+  @media (prefers-reduced-motion:reduce){
+    nav{ transition:none; }
+    .nav-toggle span{ transition:none; }
+  }
+
   /* anchor offset so headings aren't flush to the top edge */
-  [id]{ scroll-margin-top:1.5rem; }
-  #top{ scroll-margin-top:2.5rem; }
+  [id]{ scroll-margin-top:6rem; }
+  #top{ scroll-margin-top:0; }
 
   /* --- brief --- */
   h1{
@@ -386,7 +462,11 @@
       <img src="BCA_Square_White.png" alt="Brucker Cyber Advisors">
       Brucker Cyber Advisors
     </div>
-    <nav>
+    <button class="nav-toggle" id="navToggle" type="button"
+            aria-expanded="false" aria-controls="siteNav" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+    <nav id="siteNav">
       <a href="#top">Home</a>
       <a href="#how">How it works</a>
       <a href="#team">About</a>
@@ -510,6 +590,40 @@
       });
     }, { rootMargin: '-15% 0px -70% 0px' });
     targets.forEach(function(t){ spy.observe(t); });
+  })();
+
+  // shadow under the bar once the page scrolls
+  (function(){
+    var bar = document.querySelector('.masthead');
+    if (!bar) return;
+    function sync(){ bar.classList.toggle('stuck', window.scrollY > 4); }
+    window.addEventListener('scroll', sync, { passive:true });
+    sync();
+  })();
+
+  // collapsible nav
+  (function(){
+    var toggle = document.getElementById('navToggle');
+    var menu   = document.getElementById('siteNav');
+    if (!toggle || !menu) return;
+
+    function setOpen(open){
+      menu.classList.toggle('open', open);
+      toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+    }
+    toggle.addEventListener('click', function(e){
+      e.stopPropagation();
+      setOpen(!menu.classList.contains('open'));
+    });
+    menu.addEventListener('click', function(e){
+      if (e.target.tagName === 'A') setOpen(false);
+    });
+    document.addEventListener('click', function(e){
+      if (menu.classList.contains('open') && !menu.contains(e.target) && !toggle.contains(e.target)) setOpen(false);
+    });
+    document.addEventListener('keydown', function(e){
+      if (e.key === 'Escape') setOpen(false);
+    });
   })();
 
   document.getElementById('submitBtn').addEventListener('click', function(){
