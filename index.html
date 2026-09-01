@@ -413,6 +413,8 @@
   textarea{ resize:vertical; min-height:80px; font-family:var(--font-body); }
   select{ appearance:none; background-image:linear-gradient(45deg,transparent 50%,var(--slate) 50%),linear-gradient(135deg,var(--slate) 50%,transparent 50%); background-position:calc(100% - 18px) 50%, calc(100% - 13px) 50%; background-size:5px 5px,5px 5px; background-repeat:no-repeat; }
 
+  .hp{ position:absolute; left:-9999px; opacity:0; height:0; overflow:hidden; }
+
   button{
     width:100%;
     font-family:var(--font-display);
@@ -432,6 +434,7 @@
     box-shadow:0 8px 20px rgba(31,78,128,0.28);
   }
   button:active{ transform:translateY(0); box-shadow:none; }
+  button[disabled]{ opacity:0.6; cursor:default; transform:none; box-shadow:none; }
 
   .form-foot{
     font-size:0.85rem;
@@ -440,6 +443,15 @@
     text-align:center;
     line-height:1.5;
   }
+  .form-error{
+    display:none;
+    font-size:0.85rem;
+    color:#A3282B;
+    margin:0.9rem 0 0;
+    text-align:center;
+    line-height:1.5;
+  }
+  .form-error.on{ display:block; }
 
   .confirm{
     display:none;
@@ -557,7 +569,11 @@
   <span class="section-note reveal" id="contact">Get in touch</span>
   <h2 class="reveal">Tell us about your organization.</h2>
 
-  <div class="form-card reveal">
+  <form class="form-card reveal" id="contactForm" name="contact" method="POST"
+        data-netlify="true" netlify-honeypot="bot-field">
+    <input type="hidden" name="form-name" value="contact">
+    <p class="hp" aria-hidden="true"><label>Don't fill this out if you're human: <input name="bot-field" tabindex="-1" autocomplete="off"></label></p>
+
     <div id="formBody">
       <div class="field">
         <label for="name">Name</label>
@@ -577,10 +593,11 @@
       </div>
       <div class="field">
         <label for="notes">Anything we should know <span class="opt">(optional)</span></label>
-        <textarea id="notes" name="notes" placeholder="Renewal date, current carrier, or what prompted you to reach out."></textarea>
+        <textarea id="notes" name="message" placeholder="Renewal date, current carrier, or what prompted you to reach out."></textarea>
       </div>
-      <button type="button" id="submitBtn">Request a review</button>
+      <button type="submit" id="submitBtn">Request a review</button>
       <p class="form-foot">We'll reply within two business days. No cost, no obligation.</p>
+      <p class="form-error" id="formError"></p>
     </div>
 
     <div class="confirm" id="confirm">
@@ -588,7 +605,7 @@
       <h3>Thanks, we've got it.</h3>
       <p>We'll be in touch within two business days.</p>
     </div>
-  </div>
+  </form>
 
   <footer>
     <div class="disclaimer">
@@ -675,16 +692,49 @@
     });
   })();
 
-  document.getElementById('submitBtn').addEventListener('click', function(){
-    var email = document.getElementById('email').value.trim();
-    var name  = document.getElementById('name').value.trim();
-    if (!name || !email || email.indexOf('@') === -1) {
-      alert('Please add your name and a valid email.');
-      return;
+  // contact form: POST to Netlify, then show the confirmation panel
+  (function(){
+    var form = document.getElementById('contactForm');
+    if (!form) return;
+
+    var btn   = document.getElementById('submitBtn');
+    var error = document.getElementById('formError');
+
+    function fail(msg){
+      error.textContent = msg;
+      error.classList.add('on');
+      btn.disabled = false;
+      btn.textContent = 'Request a review';
     }
-    document.getElementById('formBody').style.display = 'none';
-    document.getElementById('confirm').classList.add('on');
-  });
+
+    form.addEventListener('submit', function(e){
+      e.preventDefault();
+
+      var name  = document.getElementById('name').value.trim();
+      var email = document.getElementById('email').value.trim();
+      if (!name || !email || email.indexOf('@') === -1) {
+        fail('Please add your name and a valid email.');
+        return;
+      }
+
+      error.classList.remove('on');
+      btn.disabled = true;
+      btn.textContent = 'Sending...';
+
+      fetch(window.location.pathname, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: new URLSearchParams(new FormData(form)).toString()
+      }).then(function(res){
+        if (!res.ok) throw new Error('Netlify returned ' + res.status);
+        document.getElementById('formBody').style.display = 'none';
+        document.getElementById('confirm').classList.add('on');
+      }).catch(function(err){
+        console.error(err);
+        fail('Something went wrong sending your request. Please email us directly.');
+      });
+    });
+  })();
 </script>
 
 </body>
